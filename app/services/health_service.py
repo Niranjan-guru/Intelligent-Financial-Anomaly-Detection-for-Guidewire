@@ -6,5 +6,6 @@ async def check_db_health(db: AsyncSession) -> bool:
         # Execute a simple query to determine if DB is healthy
         await db.execute(text("SELECT 1"))
         return True
-    except Exception:
+    except Exception as e:
+        print(f"--- Database connection error: {e} ---")
         return False

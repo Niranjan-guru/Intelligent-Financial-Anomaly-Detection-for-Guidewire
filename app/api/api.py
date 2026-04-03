@@ -1,7 +1,7 @@
 from fastapi import APIRouter
-from app.api.endpoints import health
+from app.api.endpoints import health, claims, audit
 
 api_router = APIRouter()
 api_router.include_router(health.router, tags=["health"])
-# Add other routers here as they are developed
-# api_router.include_router(claims.router, prefix="/claims", tags=["claims"])
+api_router.include_router(claims.router, prefix="/claims", tags=["claims"])
+api_router.include_router(audit.router)
